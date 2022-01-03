@@ -1,0 +1,92 @@
+{% extends 'app/base.html'%}
+{% load static %}
+{% block content %}
+
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col">
+								<h3 class="page-title">Employee Request</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+									<li class="breadcrumb-item active">Employee Request</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+				
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title mb-0">Employee Request Leave</h4>
+								</div>
+								<div class="card-body">
+									
+									<form action="{% url 'addemrequest'%}" method="POST">
+                                        {% csrf_token %}
+										<div class="row">
+											<div class="col-xl-12">
+						
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Select Reason Leave</label>
+													<div class="col-lg-9">
+														<select class="select" name="leavetype" required>
+															<option selected disabled>Select leave Type</option>
+															{% for i in cat %}
+                                                                <option>{{i.req_name}}</option>
+                                                            {% endfor %}
+														</select>															</select>
+													</div>
+												</div>
+											
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Start Date</label>
+													<div class="col-lg-9">
+														<input type="date" class="form-control" name="sdate" required>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">End Date</label>
+													<div class="col-lg-9">
+														<input type="date" class="form-control" name="edate" required>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Reason</label>
+													<div class="col-lg-9">
+														<textarea class="form-control" name="reason" required></textarea>
+													</div>
+												</div>
+				
+                                            </div>
+											
+										</div>
+										<div class="text-center">
+											<input type="submit" class="btn btn-primary" value="Submit"> 
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+				</div>			
+			</div>
+			<!-- /Main Wrapper -->
+		
+        </div>
+		<!-- /Main Wrapper -->
+{% endblock %}

@@ -1,0 +1,167 @@
+{% extends 'app/base.html'%}
+{% load static %}
+{% block content %}
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+			
+				<!-- Page Content -->
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row align-items-center">
+							<div class="col">
+								<h3 class="page-title">All Leaves (HR) Status</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+									<li class="breadcrumb-item active">All Leaves (HR) status</li>
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+					<!-- /Page Header -->
+					
+					<!-- Leave Statistics -->
+					<!-- <div class="row">
+						<div class="col-md-3">
+							<div class="stats-info">
+								<h6>Today Presents</h6>
+								<h4>12 / 60</h4>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="stats-info">
+								<h6>Planned Leaves</h6>
+								<h4>8 <span>Today</span></h4>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="stats-info">
+								<h6>Unplanned Leaves</h6>
+								<h4>0 <span>Today</span></h4>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="stats-info">
+								<h6>Pending Requests</h6>
+								<h4>12</h4>
+							</div>
+						</div>
+					</div> -->
+					<!-- /Leave Statistics -->
+					
+					<!-- Search Filter -->
+					<!-- <div class="row filter-row">
+					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
+							<div class="form-group form-focus">
+								<input type="text" class="form-control floating">
+								<label class="focus-label">Employee Name</label>
+							</div>
+					   </div>
+					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
+							<div class="form-group form-focus select-focus">
+								<select class="select floating"> 
+									<option> -- Select -- </option>
+									<option>Casual Leave</option>
+									<option>Medical Leave</option>
+									<option>Loss of Pay</option>
+								</select>
+								<label class="focus-label">Leave Type</label>
+							</div>
+					   </div>
+					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12"> 
+							<div class="form-group form-focus select-focus">
+								<select class="select floating"> 
+									<option> -- Select -- </option>
+									<option> Pending </option>
+									<option> Approved </option>
+									<option> Rejected </option>
+								</select>
+								<label class="focus-label">Leave Status</label>
+							</div>
+					   </div>
+					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
+							<div class="form-group form-focus">
+								<div class="cal-icon">
+									<input class="form-control floating datetimepicker" type="text">
+								</div>
+								<label class="focus-label">From</label>
+							</div>
+						</div>
+					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
+							<div class="form-group form-focus">
+								<div class="cal-icon">
+									<input class="form-control floating datetimepicker" type="text">
+								</div>
+								<label class="focus-label">To</label>
+							</div>
+						</div>
+					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">  
+							<a href="#" class="btn btn-success btn-block"> Search </a>  
+					   </div>     
+                    </div> -->
+					<!-- /Search Filter -->
+					
+					<div class="row">
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table table-striped custom-table mb-0 datatable">
+									<thead>
+										<tr>
+											<th>HR Name</th>
+											<th>Leave Type</th>
+											<th>From</th>
+											<th>To</th>
+											<th>Reason</th>
+											<th class="text-center">Status</th>
+											
+										</tr>
+									</thead>
+					
+									<tbody>
+										{% for i in Emall %}
+											<tr>
+												<td>{{ i.hr.Firstname}}</td>
+												<td>{{i.reqna}}</td>
+												<td>{{i.startdate}}</td>
+												<td>{{i.enddate}}</td>
+												<td>{{i.reason}}</td>
+												<td class="text-center">
+                                                    {% if i.status == 'Accept'%}
+														<a class="badge badge-success" href="#">{{i.status}}</a>
+                                                    {% elif i.status == 'Reject'%}
+														<a class="badge badge-danger" href="#">{{i.status}}</a>
+                                                    {% else %}
+                                                            <a class="badge badge-warning" href="#">{{i.status}}</a>
+                                                    
+                                                    {% endif %}
+                                                </td>		
+											
+											</tr>
+										{% endfor %}
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+                </div>
+				<!-- /Page Content -->
+				
+
+				
+            </div>
+			<!-- /Page Wrapper -->
+
+        </div>
+		<!-- /Main Wrapper -->
+
+{% endblock %}
